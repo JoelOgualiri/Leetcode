@@ -22,8 +22,8 @@ function diameterOfBinaryTreeHelper(root){
     let left = diameterOfBinaryTreeHelper(root.left) 
     let right = diameterOfBinaryTreeHelper(root.right)
     
-    let currentDiameter = 2 + left[1] + right[1]
-    res[0] = Math.max(res[0], currentDiameter, left[0], right[0])
-    res[1] = Math.max(left[1],right[1])+1
+    let currentDiameter = 2 + left[1] + right[1] //formula for diameter
+    res[0] = Math.max(res[0], currentDiameter, left[0], right[0]) //get maximum diameter
+    res[1] = Math.max(left[1],right[1])+1 //get maximum height of both left and right
     return res
 }
