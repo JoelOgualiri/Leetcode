@@ -17,5 +17,10 @@ var isSymmetric = function(root) {
 function isMirror(leftTree,rightTree){
     if (leftTree === null && rightTree === null) return true
     if (leftTree === null || rightTree === null) return false
-    return leftTree.val === rightTree.val && isMirror(leftTree.left,rightTree.right) && isMirror(leftTree.right,rightTree.left)
+    if (leftTree.val === rightTree.val){
+        const p1 = isMirror(leftTree.left,rightTree.right) 
+        const p2 = isMirror(leftTree.right,rightTree.left)
+        if (p1 && p2) return true
+    }
+    return false
 }
