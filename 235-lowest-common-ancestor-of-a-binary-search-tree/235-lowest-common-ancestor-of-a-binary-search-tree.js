@@ -14,15 +14,14 @@
  */
 var lowestCommonAncestor = function(root, p, q) {
     if (root === null) return null
-   if (root.val === p.val || root.val === q.val) return root;
-    if (root.left == null && root.right == null) return null;
+    if (p.val === root.val || q.val === root.val) return root;
+    if (!(p.val < root.val && q.val < root.val) && !(p.val > root.val && q.val > root.val)) return root;
     let left, right
-
-        left = lowestCommonAncestor(root.left, p, q)
-    
-    
-        right = lowestCommonAncestor(root.right, p, q)
-    
-    if (left && right) return root
-    return left==null?right:left
+    if (p.val < root.val && q.val < root.val){
+         left = lowestCommonAncestor(root.left, p, q)
+    }
+    if (p.val > root.val && q.val > root.val){
+       right = lowestCommonAncestor(root.right, p, q)
+    }
+    return left?left:right
 }
