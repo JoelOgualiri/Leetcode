@@ -17,7 +17,7 @@ var lengthOfLongestSubstring = function(s) {
             hm[s[R]] = 1
             R++
         }else{
-            max = Math.max(current,max)
+
             delete hm[s[L]]
             current--
             L++
