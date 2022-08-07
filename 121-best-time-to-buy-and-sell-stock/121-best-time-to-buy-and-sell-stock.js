@@ -3,17 +3,18 @@
  * @return {number}
  */
 var maxProfit = function(prices) {
-    let max = 0;
-    let buy = 0;
-    let sell = buy + 1;
-    while (sell < prices.length && buy < sell){
-        if (prices[sell] - prices[buy] > max){
-            max = prices[sell] - prices[buy]
-        }else if (prices[buy] > prices[sell]){
-            buy = sell
-        }
-        sell++
+      let maxProf = 0;
+  let buy = 0;
+  let sell = buy + 1;
+
+  while (sell < prices.length) {
+    if (prices[sell] < prices[buy]) {
+      buy = sell;
     }
-    return max
+    maxProf = Math.max(maxProf, prices[sell] - prices[buy]);
+    sell++;
+  }
+
+  return maxProf;
 
 };
