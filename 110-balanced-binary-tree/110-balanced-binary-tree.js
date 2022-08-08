@@ -19,8 +19,8 @@ var isBalanced = function(root) {
 };
 
 function isBalancedHelper(root){
-    if (root === null) return 0;
-    if (root.left === null && root.right === null) return 1;
+    if (root === null) return -1;
+    if (root.left === null && root.right === null) return 0;
     
     const left = isBalancedHelper(root.left)
     if (left === false) return false
