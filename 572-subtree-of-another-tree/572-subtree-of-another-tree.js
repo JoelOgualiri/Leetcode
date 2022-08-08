@@ -12,22 +12,32 @@
  * @return {boolean}
  */
 var isSubtree = function(root, subRoot) {
-    let queue = [root]
+   if (root === null){
+       if (subRoot === null) return true
+       return false
+   }
+    const queue = [root]
     while(queue.length > 0){
-        const current = queue.shift()
-        if (current.val === subRoot.val){
-            const res = validateTree(current, subRoot)
-            if (res) return true
+        const curr = queue.shift()
+        if (curr.val === subRoot.val){
+            if (dfs(curr,subRoot)) return true
         }
-        if (current.left)queue.push(current.left)
-        if (current.right)queue.push(current.right)
+        if (curr.left){
+            queue.push(curr.left)
+        }
+        if (curr.right){
+            queue.push(curr.right)
+        }
     }
     return false
-};
+}
 
-function validateTree(root, subRoot){
-    if (root === null && subRoot ===null) return true
+function dfs(root, subRoot){
+    if (root === null && subRoot === null) return true
     if (root === null || subRoot === null) return false
     
-    return root.val === subRoot.val && validateTree(root.left, subRoot.left) && validateTree(root.right,subRoot.right)
+    if (root.val === subRoot.val){
+        return dfs(root.left, subRoot.left) && dfs(root.right, subRoot.right)
+    }
+    return false
 }
