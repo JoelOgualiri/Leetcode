@@ -11,21 +11,19 @@
  * @return {number}
  */
 var goodNodes = function(root) {
-    const result = goodNodeshelper(root, max=-Infinity)
-    return result
-    
-};
+    return countNodes(root, max = -Infinity)
+}
 
-function  goodNodeshelper(root,max=-Infinity){
-    let count = 0
-    if (root === null) return 0
-    max = Math.max(max,root.val)
-    if (root.val >= max)count++
-    if (root.left === null && root.right === null) return count
+function countNodes(root, max){
+    let count = 0;
+    if (root === null) return count
     
-    
-    const left = goodNodeshelper(root.left, max)
-    const right = goodNodeshelper(root.right, max)
-    
-    return count = count + left +right
+    if (root.val >= max){
+        count++
+        max = root.val
+    }
+    const left = countNodes(root.left, max)
+    const right = countNodes(root.right, max)
+
+    return count+left+right
 }
