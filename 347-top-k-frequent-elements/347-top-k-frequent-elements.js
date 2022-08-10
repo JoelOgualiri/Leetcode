@@ -4,9 +4,9 @@
  * @return {number[]}
  */
 var topKFrequent = function(nums, k) {
-    const hm = {} 
-    const result = []
-    const res = []
+    const hm = {};
+    const result = [];
+    const res = [];
     for (let num of nums){
         if (num in hm){
             hm[num]++
