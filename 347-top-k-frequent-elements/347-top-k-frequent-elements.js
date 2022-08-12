@@ -12,7 +12,7 @@ class maxHeap {
     if (this.heap.length > 2) {
       let idx = this.heap.length - 1;
       while (this.heap[idx].freq > this.heap[Math.floor(idx / 2)].freq) {
-        if (idx >= 1) {
+        if (idx > 1) {
           [this.heap[idx], this.heap[Math.floor(idx / 2)]] = [
             this.heap[Math.floor(idx / 2)],
             this.heap[idx],
