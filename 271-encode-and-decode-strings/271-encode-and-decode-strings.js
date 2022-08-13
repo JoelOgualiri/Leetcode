@@ -20,24 +20,20 @@ var encode = function(strs) {
  * @return {string[]}
  */
 var decode = function(str) {
-     const res = [];
-     let i = 0;
-    let j = 0;
-
-    while (j < str.length) {
-     
-        while (str[j] !== '#') {
-            j++;
+    let i = 0;
+    let  j = 0;
+    const result = []
+    while (j < str.length){
+        while(str[j] !== "#"){
+            j++
         }
-
-        const len = Number(str.slice(i,j));
+        let len = Number(str.slice(i,j))
         j++
-        res.push(str.slice(j, j + len));
-        i = j + len;
+        result.push(str.slice(j,j+len))
+        i = j+len
         j = i
     }
-
-    return res;
+    return result
 };
 
 /**
