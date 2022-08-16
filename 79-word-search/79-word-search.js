@@ -34,7 +34,8 @@ function dfs(i, row,col,board,word,maxRow,maxCol, visited){
     const up = dfs(i+1, row-1,col,board,word,maxRow,maxCol, visited)
     const down = dfs(i+1, row+1,col,board,word,maxRow,maxCol, visited)
     
-    visited.delete(pos)
+    visited.delete(pos);
+    
     return left || right || up || down
     
 }
