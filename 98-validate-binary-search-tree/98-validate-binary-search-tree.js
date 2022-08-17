@@ -11,13 +11,14 @@
  * @return {boolean}
  */
 var isValidBST = function(root) {
-   
-    return isValidBSTHelper(root, min = -Infinity, max = Infinity)
-};
-
-function isValidBSTHelper(root, min, max){
+        return dfs(root, min = -Infinity, max = Infinity)
+}
+function dfs(root,min,max){
     if (root === null) return true
     if (root.val <= min || root.val >= max) return false
     
-    return  isValidBSTHelper(root.left, min, root.val) && isValidBSTHelper(root.right, root.val, max)
+    const left = dfs(root.left, min, root.val)
+    const right = dfs(root.right, root.val, max)
+
+    return left && right
 }
