@@ -11,25 +11,25 @@
  * @return {Node}
  */
 var cloneGraph = function(node) {
-    if (node=== null) return null
-   const visited = {};
+    if (node === null) return null
+    const cloned = {}
     const queue = [node]
-    let copy = new Node(node.val)
-    visited[node.val] = copy
-    
-    while(queue.length > 0){
-        const current = queue.shift();
-        for (let neighbor of current.neighbors){
-            if (!(neighbor.val in visited)){
-      
-                visited[neighbor.val] = new Node(neighbor.val);
+    while (queue.length > 0){
+        const currNode = queue.shift()
+        if (!(currNode.val in cloned)){
+            cloned[currNode.val] = new Node(currNode.val)
+        }
+        for (let neighbor of currNode.neighbors){
+            if (!(neighbor.val in cloned)){
+                cloned[neighbor.val] = new Node(neighbor.val);
                 queue.push(neighbor)
             }
-            visited[neighbor.val].neighbors.push(visited[current.val])
-  
+            cloned[neighbor.val].neighbors.push(cloned[currNode.val])
         }
-    };
-    return visited[node.val]
+        
+    }
+
+    return cloned[node.val]
 
     
 };
